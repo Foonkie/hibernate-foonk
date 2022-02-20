@@ -792,7 +792,7 @@ false posixrules
       <ObjectId>12938</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>587</IntrospectionStateNumber>
+      <IntrospectionStateNumber>593</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="3" parent="1" name="pg_monitor">
@@ -854,7 +854,7 @@ UC/10
 </Acl>
       <StateNumber>352</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>588</IntrospectionStateNumber>
+      <IntrospectionStateNumber>594</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="14" parent="2" name="adminpack">
@@ -956,44 +956,50 @@ UC/10
       <Type>index</Type>
     </access-method>
     <table id="26" parent="13" name="users">
-      <ObjectId>16408</ObjectId>
+      <ObjectId>16413</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>581</StateNumber>
+      <StateNumber>592</StateNumber>
     </table>
     <column id="27" parent="26" name="username">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>581</StateNumber>
+      <StateNumber>592</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="28" parent="26" name="firstname">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
-      <StateNumber>581</StateNumber>
+      <StateNumber>592</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="29" parent="26" name="lastname">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
-      <StateNumber>581</StateNumber>
+      <StateNumber>592</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="30" parent="26" name="birth_date">
       <Position>4</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>581</StateNumber>
+      <StateNumber>592</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="31" parent="26" name="role">
       <Position>5</Position>
       <DataType>varchar(32)|0s</DataType>
-      <StateNumber>581</StateNumber>
+      <StateNumber>592</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="32" parent="26" name="users_pkey">
-      <ObjectId>16411</ObjectId>
-      <StateNumber>581</StateNumber>
+    <column id="32" parent="26" name="info">
+      <Position>6</Position>
+      <DataType>jsonb|0s</DataType>
+      <StateNumber>592</StateNumber>
+      <TypeId>3802</TypeId>
+    </column>
+    <index id="33" parent="26" name="users_pkey">
+      <ObjectId>16419</ObjectId>
+      <StateNumber>592</StateNumber>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1002,9 +1008,9 @@ UC/10
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="33" parent="26" name="users_pkey">
-      <ObjectId>16412</ObjectId>
-      <StateNumber>581</StateNumber>
+    <key id="34" parent="26" name="users_pkey">
+      <ObjectId>16420</ObjectId>
+      <StateNumber>592</StateNumber>
       <ColNames>username</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>

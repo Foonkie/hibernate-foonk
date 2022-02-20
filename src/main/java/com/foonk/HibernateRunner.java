@@ -4,6 +4,7 @@ import com.foonk.converter.BirthdayConverter;
 import com.foonk.entitiy.Birthday;
 import com.foonk.entitiy.Role;
 import com.foonk.entitiy.User;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -21,6 +22,7 @@ public class HibernateRunner {
         var configuration = new Configuration();
         configuration.addAttributeConverter(new BirthdayConverter(), true);
         configuration.addAnnotatedClass(User.class);
+        configuration.registerTypeOverride(new JsonBinaryType());
         configuration.configure();
         try (var sessionFactory = configuration.buildSessionFactory();
         var session = sessionFactory.openSession()) {
@@ -29,6 +31,12 @@ public class HibernateRunner {
                     .username("hibernate@gmail.com")
                     .firstname("Vasya")
                     .lastname("Shelkov")
+                    .info("""
+                  {
+                  "name": "Petr",
+                  "id": "67"
+                  }
+                  """ )
                     .birthDate(new Birthday(LocalDate.of(2000, 05, 23)))
                     .role(Role.ADMIN)
                     .build();
