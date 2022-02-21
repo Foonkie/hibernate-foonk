@@ -5,9 +5,11 @@ com/foonk/entitiy/Birthday.java
 com/foonk/entitiy/User.java
  com.foonk.entitiy.User
  com.foonk.entitiy.User$UserBuilder
-com/foonk/HibernateRunner.java
- com.foonk.HibernateRunner
-com/foonk/entitiy/Role.java
- com.foonk.entitiy.Role
 com/foonk/type/JsonType.java
  com.foonk.type.JsonType
+com/foonk/entitiy/Role.java
+ com.foonk.entitiy.Role
+com/foonk/util/HibernateUtil.java
+ com.foonk.util.HibernateUtil
+com/foonk/HibernateRunner.java
+ com.foonk.HibernateRunner

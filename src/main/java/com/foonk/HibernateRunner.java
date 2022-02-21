@@ -4,6 +4,7 @@ import com.foonk.converter.BirthdayConverter;
 import com.foonk.entitiy.Birthday;
 import com.foonk.entitiy.Role;
 import com.foonk.entitiy.User;
+import com.foonk.util.HibernateUtil;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,31 +18,25 @@ import java.util.concurrent.BlockingDeque;
 
 public class HibernateRunner {
     public static void main(String[] args) throws SQLException {
-//        BlockingDeque<Connection> pool=null;
-//        var connection = DriverManager.getConnection("db.url", "db.username", "db.password");
-        var configuration = new Configuration();
-        configuration.addAttributeConverter(new BirthdayConverter(), true);
-        configuration.addAnnotatedClass(User.class);
-        configuration.registerTypeOverride(new JsonBinaryType());
-        configuration.configure();
-        try (var sessionFactory = configuration.buildSessionFactory();
-        var session = sessionFactory.openSession()) {
-            session.beginTransaction();
-            User build = User.builder()
-                    .username("hibernate@gmail.com")
-                    .firstname("Vasya")
-                    .lastname("Shelkov")
-                    .info("""
-                  {
-                  "name": "Petr",
-                  "id": "67"
-                  }
-                  """ )
-                    .birthDate(new Birthday(LocalDate.of(2000, 05, 23)))
-                    .role(Role.ADMIN)
-                    .build();
-            session.save(build);
-            session.getTransaction().commit();
+        User user = User.builder()
+                .username("petr@yahoo.com")
+                .firstname("Petr")
+                .lastname("Petrov")
+                .build();
+        try (var sessionFactory = HibernateUtil.buildSessionFactory()){
+            try (var session1 = sessionFactory.openSession()) {
+                session1.beginTransaction();
+                session1.saveOrUpdate(user);
+
+                session1.getTransaction().commit();
+            }
+            try (var session2 = sessionFactory.openSession()) {
+                session2.beginTransaction();
+                user.setFirstname("Vasya");
+                session2.merge(user);
+
+                session2.getTransaction().commit();
+            }
         }
     }
 }
