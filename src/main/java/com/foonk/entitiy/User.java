@@ -19,15 +19,16 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(unique = true)
     private String username;
-    private String firstname;
-    private String lastname;
-    @Convert(converter = BirthdayConverter.class)
-    @Column(name = "birth_date")
-    private Birthday birthDate;
+    private PersonalInfo personalInfo;
     @Type(type = "com.vladmihalcea.hibernate.type.json.JsonBinaryType")
     private String info;
     @Enumerated(EnumType.STRING)
     private Role role;
-
+    @ManyToOne
+    @JoinColumn(name = "company_id") // company_id
+    private Company company;
 }
