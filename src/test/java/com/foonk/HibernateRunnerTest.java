@@ -1,7 +1,11 @@
 package com.foonk;
 
 
+import com.foonk.entitiy.Company;
+import com.foonk.entitiy.Profile;
 import com.foonk.entitiy.User;
+import com.foonk.util.HibernateUtil;
+import lombok.Cleanup;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
@@ -16,7 +20,52 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.joining;
 
 class HibernateRunnerTest {
+    @Test
+    void checkOneToOne() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
 
+
+            var user = User.builder()
+                    .username("test4@gmail.com")
+                    .build();
+            var profile = Profile.builder()
+                    .language("ru")
+                    .street("Kolasa 18")
+                    .build();
+            profile.setUser(user);
+
+//
+            session.save(user);
+//            profile.setUser(user);
+//            session.save(profile);
+
+            session.getTransaction().commit();
+        }
+    }
+    @Test
+    void addUserToNewCompany() {
+        @Cleanup var sessionFactory = HibernateUtil.buildSessionFactory();
+        @Cleanup var session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        var company = Company.builder()
+                .name("Facebook")
+                .build();
+
+        var user = User.builder()
+                .username("sveta@gmail.com")
+                .build();
+//        user.setCompany(company);
+//        company.getUsers().add(user)
+        company.addUser(user);
+
+
+        session.save(company);
+
+        session.getTransaction().commit();
+    }
     @Test
     void checkReflectionApi() throws SQLException, IllegalAccessException {
         User user = User.builder()

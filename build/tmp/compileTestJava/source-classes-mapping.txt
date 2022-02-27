@@ -1,0 +1,2 @@
+com/foonk/HibernateRunnerTest.java
+ com.foonk.HibernateRunnerTest

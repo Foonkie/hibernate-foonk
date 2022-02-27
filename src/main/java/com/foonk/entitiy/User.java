@@ -2,10 +2,7 @@ package com.foonk.entitiy;
 
 import com.foonk.converter.BirthdayConverter;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = {"company, profile"})
 @Entity
 @Table(name = "users")
 public class User {
@@ -31,4 +29,6 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "company_id") // company_id
     private Company company;
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    private Profile profile;
 }

@@ -2,20 +2,20 @@ com/foonk/converter/BirthdayConverter.java
  com.foonk.converter.BirthdayConverter
 com/foonk/entitiy/Birthday.java
  com.foonk.entitiy.Birthday
-com/foonk/type/JsonType.java
- com.foonk.type.JsonType
-com/foonk/entitiy/Role.java
- com.foonk.entitiy.Role
 com/foonk/entitiy/PersonalInfo.java
  com.foonk.entitiy.PersonalInfo
  com.foonk.entitiy.PersonalInfo$PersonalInfoBuilder
-com/foonk/entitiy/Company.java
- com.foonk.entitiy.Company
- com.foonk.entitiy.Company$CompanyBuilder
+com/foonk/util/HibernateUtil.java
+ com.foonk.util.HibernateUtil
 com/foonk/entitiy/User.java
  com.foonk.entitiy.User
  com.foonk.entitiy.User$UserBuilder
-com/foonk/util/HibernateUtil.java
- com.foonk.util.HibernateUtil
 com/foonk/HibernateRunner.java
  com.foonk.HibernateRunner
+com/foonk/entitiy/Role.java
+ com.foonk.entitiy.Role
+com/foonk/entitiy/Company.java
+ com.foonk.entitiy.Company
+ com.foonk.entitiy.Company$CompanyBuilder
+com/foonk/type/JsonType.java
+ com.foonk.type.JsonType
