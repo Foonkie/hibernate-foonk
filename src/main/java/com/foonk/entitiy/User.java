@@ -7,12 +7,15 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = {"company, profile"})
+@ToString(exclude = {"company", "profile", "chats"})
 @Entity
 @Table(name = "users")
 public class User {
@@ -31,4 +34,17 @@ public class User {
     private Company company;
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Profile profile;
+
+    @Builder.Default
+    @ManyToMany
+    @JoinTable(
+            name = "users_chat",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "chat_id"))
+    private Set<Chat> chats = new HashSet<>();
+
+    public void addChat(Chat chat) {
+        chats.add(chat);
+        chat.getUsers().add(this);
+    }
 }

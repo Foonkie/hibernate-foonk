@@ -1,6 +1,7 @@
 package com.foonk;
 
 
+import com.foonk.entitiy.Chat;
 import com.foonk.entitiy.Company;
 import com.foonk.entitiy.Profile;
 import com.foonk.entitiy.User;
@@ -40,6 +41,26 @@ class HibernateRunnerTest {
             session.save(user);
 //            profile.setUser(user);
 //            session.save(profile);
+
+            session.getTransaction().commit();
+        }
+    }
+    @Test
+    void checkManyToMany() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            var user = session.get(User.class, 1L);
+
+//            user.getChats().clear();
+
+            var chat = Chat.builder()
+                    .name("Petya")
+                    .build();
+            user.addChat(chat);
+
+            session.save(chat);
 
             session.getTransaction().commit();
         }
