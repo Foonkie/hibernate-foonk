@@ -1,10 +1,7 @@
 package com.foonk;
 
 
-import com.foonk.entitiy.Chat;
-import com.foonk.entitiy.Company;
-import com.foonk.entitiy.Profile;
-import com.foonk.entitiy.User;
+import com.foonk.entitiy.*;
 import com.foonk.util.HibernateUtil;
 import lombok.Cleanup;
 import org.junit.jupiter.api.Test;
@@ -21,6 +18,21 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.joining;
 
 class HibernateRunnerTest {
+
+    @Test
+    void localeInfo() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            var company = session.get(Company.class, 1);
+            company.getLocales().add(LocaleInfo.of("ru", "Описание на русском"));
+            company.getLocales().add(LocaleInfo.of("en", "English description"));
+//            System.out.println(company.getLocales());
+
+            session.getTransaction().commit();
+        }
+    }
     @Test
     void checkOneToOne() {
         try (var sessionFactory = HibernateUtil.buildSessionFactory();

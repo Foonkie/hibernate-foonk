@@ -5,6 +5,13 @@ com/foonk/entitiy/Birthday.java
 com/foonk/entitiy/PersonalInfo.java
  com.foonk.entitiy.PersonalInfo
  com.foonk.entitiy.PersonalInfo$PersonalInfoBuilder
+com/foonk/type/JsonType.java
+ com.foonk.type.JsonType
+com/foonk/entitiy/Role.java
+ com.foonk.entitiy.Role
+com/foonk/entitiy/Chat.java
+ com.foonk.entitiy.Chat
+ com.foonk.entitiy.Chat$ChatBuilder
 com/foonk/util/HibernateUtil.java
  com.foonk.util.HibernateUtil
 com/foonk/entitiy/User.java
@@ -12,10 +19,9 @@ com/foonk/entitiy/User.java
  com.foonk.entitiy.User$UserBuilder
 com/foonk/HibernateRunner.java
  com.foonk.HibernateRunner
-com/foonk/entitiy/Role.java
- com.foonk.entitiy.Role
+com/foonk/entitiy/Profile.java
+ com.foonk.entitiy.Profile
+ com.foonk.entitiy.Profile$ProfileBuilder
 com/foonk/entitiy/Company.java
  com.foonk.entitiy.Company
  com.foonk.entitiy.Company$CompanyBuilder
-com/foonk/type/JsonType.java
- com.foonk.type.JsonType

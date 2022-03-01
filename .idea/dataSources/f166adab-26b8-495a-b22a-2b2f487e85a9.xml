@@ -786,13 +786,13 @@ false Z
 false Zulu
 false posixrules
 </TimeZones>
-      <StartupTime>1646073275</StartupTime>
+      <StartupTime>1646158846</StartupTime>
     </root>
     <database id="2" parent="1" name="postgres">
       <ObjectId>12938</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>646</IntrospectionStateNumber>
+      <IntrospectionStateNumber>651</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|16434|16436|1
 sequence|table|16444|16446|1
@@ -859,7 +859,7 @@ UC/10
 </Acl>
       <StateNumber>352</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>647</IntrospectionStateNumber>
+      <IntrospectionStateNumber>652</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="14" parent="2" name="adminpack">
@@ -992,24 +992,29 @@ UC/10
     <table id="31" parent="13" name="company">
       <ObjectId>16436</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>616</StateNumber>
+      <StateNumber>650</StateNumber>
     </table>
-    <table id="32" parent="13" name="profile">
+    <table id="32" parent="13" name="company_locale">
+      <ObjectId>16546</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>650</StateNumber>
+    </table>
+    <table id="33" parent="13" name="profile">
       <ObjectId>16488</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>633</StateNumber>
     </table>
-    <table id="33" parent="13" name="users">
+    <table id="34" parent="13" name="users">
       <ObjectId>16446</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>645</StateNumber>
     </table>
-    <table id="34" parent="13" name="users_chat">
+    <table id="35" parent="13" name="users_chat">
       <ObjectId>16531</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>645</StateNumber>
     </table>
-    <column id="35" parent="30" name="id">
+    <column id="36" parent="30" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -1017,14 +1022,14 @@ UC/10
       <DefaultExpression>nextval(&apos;chat_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="36" parent="30" name="name">
+    <column id="37" parent="30" name="name">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>642</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="37" parent="30" name="chat_pkey">
+    <index id="38" parent="30" name="chat_pkey">
       <ObjectId>16527</ObjectId>
       <StateNumber>642</StateNumber>
       <ColNames>id</ColNames>
@@ -1034,7 +1039,7 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <index id="38" parent="30" name="chat_name_key">
+    <index id="39" parent="30" name="chat_name_key">
       <ObjectId>16529</ObjectId>
       <StateNumber>642</StateNumber>
       <ColNames>name</ColNames>
@@ -1044,20 +1049,20 @@ UC/10
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="39" parent="30" name="chat_pkey">
+    <key id="40" parent="30" name="chat_pkey">
       <ObjectId>16528</ObjectId>
       <StateNumber>642</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>chat_pkey</UnderlyingIndexName>
     </key>
-    <key id="40" parent="30" name="chat_name_key">
+    <key id="41" parent="30" name="chat_name_key">
       <ObjectId>16530</ObjectId>
       <StateNumber>642</StateNumber>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>chat_name_key</UnderlyingIndexName>
     </key>
-    <column id="41" parent="31" name="id">
+    <column id="42" parent="31" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1065,14 +1070,14 @@ UC/10
       <DefaultExpression>nextval(&apos;company_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="42" parent="31" name="name">
+    <column id="43" parent="31" name="name">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="43" parent="31" name="company_pkey">
+    <index id="44" parent="31" name="company_pkey">
       <ObjectId>16440</ObjectId>
       <StateNumber>613</StateNumber>
       <ColNames>id</ColNames>
@@ -1082,7 +1087,7 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <index id="44" parent="31" name="company_name_key">
+    <index id="45" parent="31" name="company_name_key">
       <ObjectId>16442</ObjectId>
       <StateNumber>613</StateNumber>
       <ColNames>name</ColNames>
@@ -1092,20 +1097,71 @@ UC/10
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="45" parent="31" name="company_pkey">
+    <key id="46" parent="31" name="company_pkey">
       <ObjectId>16441</ObjectId>
       <StateNumber>613</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>company_pkey</UnderlyingIndexName>
     </key>
-    <key id="46" parent="31" name="company_name_key">
+    <key id="47" parent="31" name="company_name_key">
       <ObjectId>16443</ObjectId>
       <StateNumber>613</StateNumber>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>company_name_key</UnderlyingIndexName>
     </key>
-    <column id="47" parent="32" name="id">
+    <column id="48" parent="32" name="company_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>650</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="49" parent="32" name="lang">
+      <Position>2</Position>
+      <DataType>char(2)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>650</StateNumber>
+      <TypeId>1042</TypeId>
+    </column>
+    <column id="50" parent="32" name="description">
+      <Position>3</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>650</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="51" parent="32" name="company_locale_pkey">
+      <ObjectId>16549</ObjectId>
+      <StateNumber>650</StateNumber>
+      <ColNames>company_id
+lang</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0,100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ClassIds>1978,10012</ClassIds>
+    </index>
+    <key id="52" parent="32" name="company_locale_pkey">
+      <ObjectId>16550</ObjectId>
+      <StateNumber>650</StateNumber>
+      <ColNames>company_id
+lang</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>company_locale_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="53" parent="32" name="company_locale_company_id_fkey">
+      <ObjectId>16551</ObjectId>
+      <StateNumber>650</StateNumber>
+      <ColNames>company_id</ColNames>
+      <RefTableId>16436</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>company</RefTableName>
+      <RefKeyName>company_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="54" parent="33" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -1113,26 +1169,26 @@ UC/10
       <DefaultExpression>nextval(&apos;profile_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="48" parent="32" name="user_id">
+    <column id="55" parent="33" name="user_id">
       <Position>2</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>633</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="49" parent="32" name="street">
+    <column id="56" parent="33" name="street">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
       <StateNumber>633</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="50" parent="32" name="language">
+    <column id="57" parent="33" name="language">
       <Position>4</Position>
       <DataType>char(2)|0s</DataType>
       <StateNumber>633</StateNumber>
       <TypeId>1042</TypeId>
     </column>
-    <index id="51" parent="32" name="profile_pkey">
+    <index id="58" parent="33" name="profile_pkey">
       <ObjectId>16492</ObjectId>
       <StateNumber>633</StateNumber>
       <ColNames>id</ColNames>
@@ -1142,7 +1198,7 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <index id="52" parent="32" name="profile_user_id_key">
+    <index id="59" parent="33" name="profile_user_id_key">
       <ObjectId>16494</ObjectId>
       <StateNumber>633</StateNumber>
       <ColNames>user_id</ColNames>
@@ -1151,20 +1207,20 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <key id="53" parent="32" name="profile_pkey">
+    <key id="60" parent="33" name="profile_pkey">
       <ObjectId>16493</ObjectId>
       <StateNumber>633</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>profile_pkey</UnderlyingIndexName>
     </key>
-    <key id="54" parent="32" name="profile_user_id_key">
+    <key id="61" parent="33" name="profile_user_id_key">
       <ObjectId>16495</ObjectId>
       <StateNumber>633</StateNumber>
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>profile_user_id_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="55" parent="32" name="profile_user_id_fkey">
+    <foreign-key id="62" parent="33" name="profile_user_id_fkey">
       <ObjectId>16496</ObjectId>
       <StateNumber>633</StateNumber>
       <ColNames>user_id</ColNames>
@@ -1174,7 +1230,7 @@ UC/10
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="56" parent="33" name="id">
+    <column id="63" parent="34" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -1182,49 +1238,49 @@ UC/10
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="57" parent="33" name="firstname">
+    <column id="64" parent="34" name="firstname">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <StateNumber>616</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="58" parent="33" name="lastname">
+    <column id="65" parent="34" name="lastname">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
       <StateNumber>616</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="59" parent="33" name="birth_date">
+    <column id="66" parent="34" name="birth_date">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <StateNumber>616</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="60" parent="33" name="username">
+    <column id="67" parent="34" name="username">
       <Position>5</Position>
       <DataType>varchar(128)|0s</DataType>
       <StateNumber>616</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="61" parent="33" name="role">
+    <column id="68" parent="34" name="role">
       <Position>6</Position>
       <DataType>varchar(32)|0s</DataType>
       <StateNumber>616</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="62" parent="33" name="info">
+    <column id="69" parent="34" name="info">
       <Position>7</Position>
       <DataType>jsonb|0s</DataType>
       <StateNumber>616</StateNumber>
       <TypeId>3802</TypeId>
     </column>
-    <column id="63" parent="33" name="company_id">
+    <column id="70" parent="34" name="company_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>616</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="64" parent="33" name="users_pkey">
+    <index id="71" parent="34" name="users_pkey">
       <ObjectId>16453</ObjectId>
       <StateNumber>616</StateNumber>
       <ColNames>id</ColNames>
@@ -1234,7 +1290,7 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <index id="65" parent="33" name="users_username_key">
+    <index id="72" parent="34" name="users_username_key">
       <ObjectId>16455</ObjectId>
       <StateNumber>616</StateNumber>
       <ColNames>username</ColNames>
@@ -1244,20 +1300,20 @@ UC/10
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="66" parent="33" name="users_pkey">
+    <key id="73" parent="34" name="users_pkey">
       <ObjectId>16454</ObjectId>
       <StateNumber>616</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <key id="67" parent="33" name="users_username_key">
+    <key id="74" parent="34" name="users_username_key">
       <ObjectId>16456</ObjectId>
       <StateNumber>616</StateNumber>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>users_username_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="68" parent="33" name="users_company_id_fkey">
+    <foreign-key id="75" parent="34" name="users_company_id_fkey">
       <ObjectId>16457</ObjectId>
       <StateNumber>616</StateNumber>
       <ColNames>company_id</ColNames>
@@ -1267,21 +1323,21 @@ UC/10
       <RefKeyName>company_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="69" parent="34" name="user_id">
+    <column id="76" parent="35" name="user_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>645</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="70" parent="34" name="chat_id">
+    <column id="77" parent="35" name="chat_id">
       <Position>2</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>645</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="71" parent="34" name="users_chat_pkey">
+    <index id="78" parent="35" name="users_chat_pkey">
       <ObjectId>16534</ObjectId>
       <StateNumber>645</StateNumber>
       <ColNames>user_id
@@ -1292,7 +1348,7 @@ chat_id</ColNames>
       <CollationIds>0,0</CollationIds>
       <ClassIds>3124,3124</ClassIds>
     </index>
-    <key id="72" parent="34" name="users_chat_pkey">
+    <key id="79" parent="35" name="users_chat_pkey">
       <ObjectId>16535</ObjectId>
       <StateNumber>645</StateNumber>
       <ColNames>user_id
@@ -1300,7 +1356,7 @@ chat_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_chat_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="73" parent="34" name="users_chat_user_id_fkey">
+    <foreign-key id="80" parent="35" name="users_chat_user_id_fkey">
       <ObjectId>16536</ObjectId>
       <StateNumber>645</StateNumber>
       <ColNames>user_id</ColNames>
@@ -1310,7 +1366,7 @@ chat_id</ColNames>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="74" parent="34" name="users_chat_chat_id_fkey">
+    <foreign-key id="81" parent="35" name="users_chat_chat_id_fkey">
       <ObjectId>16541</ObjectId>
       <StateNumber>645</StateNumber>
       <ColNames>chat_id</ColNames>
