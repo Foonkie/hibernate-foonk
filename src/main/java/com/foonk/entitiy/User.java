@@ -18,7 +18,7 @@ import java.util.Set;
 @ToString(exclude = {"company", "profile", "chats"})
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Comparable<User> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,5 +46,9 @@ public class User {
     public void addChat(Chat chat) {
         chats.add(chat);
         chat.getUsers().add(this);
+    }
+    @Override
+    public int compareTo(User o) {
+        return username.compareTo(o.username);
     }
 }
