@@ -1,10 +1,7 @@
 package com.foonk.util;
 
 import com.foonk.converter.BirthdayConverter;
-import com.foonk.entitiy.Chat;
-import com.foonk.entitiy.Company;
-import com.foonk.entitiy.Profile;
-import com.foonk.entitiy.User;
+import com.foonk.entitiy.*;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
@@ -19,6 +16,8 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(User .class);
        configuration.addAnnotatedClass(Chat.class);
        configuration.addAnnotatedClass(Profile.class);
+       configuration.addAnnotatedClass(Programmer.class);
+       configuration.addAnnotatedClass(Manager.class);
         configuration.registerTypeOverride(new JsonBinaryType());
         configuration.configure();
         return configuration.buildSessionFactory();

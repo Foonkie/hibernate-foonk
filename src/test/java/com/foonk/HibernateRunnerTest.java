@@ -20,6 +20,42 @@ import static java.util.stream.Collectors.joining;
 class HibernateRunnerTest {
 
     @Test
+    void checkH2() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            var google = Company.builder()
+                    .name("Google")
+                    .build();
+            session.save(google);
+
+            Programmer programmer = Programmer.builder()
+                    .username("ivan@gmail.com")
+                    .language(Language.JAVA)
+                    .company(google)
+                    .build();
+            session.save(programmer);
+
+            Manager manager = Manager.builder()
+                    .username("sveta@gmail.com")
+                    .projectName("Starter")
+                    .company(google)
+                    .build();
+            session.save(manager);
+            session.flush();
+
+            session.clear();
+
+            var programmer1 = session.get(Programmer.class, 1L);
+            var manager1 = session.get(User.class, 1L);
+            System.out.println();
+
+
+            session.getTransaction().commit();
+        }
+    }
+    @Test
     void localeInfo() {
         try (var sessionFactory = HibernateUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {
@@ -40,17 +76,17 @@ class HibernateRunnerTest {
             session.beginTransaction();
 
 
-            var user = User.builder()
-                    .username("test4@gmail.com")
-                    .build();
+//            var user = User.builder()
+//                    .username("test4@gmail.com")
+//                    .build();
             var profile = Profile.builder()
                     .language("ru")
                     .street("Kolasa 18")
                     .build();
-            profile.setUser(user);
+//            profile.setUser(user);
 
 //
-            session.save(user);
+//            session.save(user);
 //            profile.setUser(user);
 //            session.save(profile);
 
@@ -87,12 +123,12 @@ class HibernateRunnerTest {
                 .name("Facebook")
                 .build();
 
-        var user = User.builder()
-                .username("sveta@gmail.com")
-                .build();
-//        user.setCompany(company);
-//        company.getUsers().add(user)
-        company.addUser(user);
+//        var user = User.builder()
+//                .username("sveta@gmail.com")
+//                .build();
+////        user.setCompany(company);
+////        company.getUsers().add(user)
+//        company.addUser(user);
 
 
         session.save(company);
@@ -101,8 +137,7 @@ class HibernateRunnerTest {
     }
     @Test
     void checkReflectionApi() throws SQLException, IllegalAccessException {
-        User user = User.builder()
-                .build();
+        User user = null;
 
         String sql = """
                 insert

@@ -14,13 +14,13 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @ToString(exclude = {"company", "profile", "chats"})
 @Entity
 @Table(name = "users")
-public class User implements Comparable<User> {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class User implements Comparable<User> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(unique = true)
     private String username;
@@ -35,7 +35,7 @@ public class User implements Comparable<User> {
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Profile profile;
 
-    @Builder.Default
+//    @Builder.Default
     @ManyToMany
     @JoinTable(
             name = "users_chat",
