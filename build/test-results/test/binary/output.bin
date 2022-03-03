@@ -1,5 +1,5 @@
-c[23:52:57,170] INFO [org.hibernate.Version: 44] HHH000412: Hibernate ORM core version 5.6.5.Final
-R[23:52:57,717] INFO [Hibernate Types: 298] This framework is proudly powered by:
+c[22:48:42,913] INFO [org.hibernate.Version: 44] HHH000412: Hibernate ORM core version 5.6.5.Final
+R[22:48:43,320] INFO [Hibernate Types: 298] This framework is proudly powered by:
 
 B>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 + _    _                           _     _
@@ -20,82 +20,24 @@
 3https://vladmihalcea.com/hypersistence-optimizer/
 B<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-}[23:52:58,732] INFO [org.hibernate.annotations.common.Version: 56] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-�[23:52:58,997] WARN [org.hibernate.orm.connections.pooling: 72] HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-�[23:52:59,007] INFO [org.hibernate.orm.connections.pooling: 115] HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/postgres]
-�[23:52:59,007] INFO [org.hibernate.orm.connections.pooling: 124] HHH10001001: Connection properties: {password=****, user=postgres}
-f[23:52:59,007] INFO [org.hibernate.orm.connections.pooling: 129] HHH10001003: Autocommit mode: false
-�[23:52:59,017] INFO [org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl: 274] HHH000115: Hibernate connection pool size: 20 (min=1)
-~[23:52:59,329] INFO [org.hibernate.dialect.Dialect: 175] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-�[23:52:59,853] WARN [org.hibernate.type.descriptor.java.JavaTypeDescriptorRegistry: 144] HHH000481: Encountered Java type [class com.foonk.entitiy.Birthday] for which we could not locate a JavaTypeDescriptor and which does not appear to implement equals and/or hashCode.  This can lead to significant performance problems when performing equality/dirty checking involving this Java type.  Consider registering a custom JavaTypeDescriptor or at least implementing equals/hashCode.
-�[23:53:01,214] INFO [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator: 52] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-Hibernate: 
-    select
-         user0_.id as id1_3_0_,
-.        user0_.company_id as company_8_3_0_,
-$        user0_.info as info2_3_0_,
-.        user0_.birth_date as birth_da3_3_0_,
--        user0_.firstname as firstnam4_3_0_,
-,        user0_.lastname as lastname5_3_0_,
-$        user0_.role as role6_3_0_,
-,        user0_.username as username7_3_0_,
-#        company1_.id as id1_1_1_,
-'        company1_.name as name2_1_1_,
-#        profile2_.id as id1_2_2_,
-/        profile2_.language as language2_2_2_,
-+        profile2_.street as street3_2_2_,
--        profile2_.user_id as user_id4_2_2_ 
-
-    from
-        users user0_ 
-    left outer join
-        Company company1_ 
-0            on user0_.company_id=company1_.id 
-    left outer join
-        Profile profile2_ 
--            on user0_.id=profile2_.user_id 
-    where
-        user0_.id=?
-Hibernate: 
-    select
-+        chats0_.user_id as user_id1_4_0_,
-+        chats0_.chat_id as chat_id2_4_0_,
-         chat1_.id as id1_0_1_,
-$        chat1_.name as name2_0_1_ 
-
-    from
-        users_chat chats0_ 
-    inner join
-        Chat chat1_ 
-+            on chats0_.chat_id=chat1_.id 
-    where
-        chats0_.user_id=?
+}[22:48:44,281] INFO [org.hibernate.annotations.common.Version: 56] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+�[22:48:44,507] WARN [org.hibernate.orm.connections.pooling: 72] HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+�[22:48:44,522] INFO [org.hibernate.orm.connections.pooling: 115] HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/postgres]
+�[22:48:44,522] INFO [org.hibernate.orm.connections.pooling: 124] HHH10001001: Connection properties: {password=****, user=postgres}
+f[22:48:44,522] INFO [org.hibernate.orm.connections.pooling: 129] HHH10001003: Autocommit mode: false
+�[22:48:44,532] INFO [org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl: 274] HHH000115: Hibernate connection pool size: 20 (min=1)
+~[22:48:44,827] INFO [org.hibernate.dialect.Dialect: 175] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+�[22:48:45,312] WARN [org.hibernate.type.descriptor.java.JavaTypeDescriptorRegistry: 144] HHH000481: Encountered Java type [class com.foonk.entitiy.Birthday] for which we could not locate a JavaTypeDescriptor and which does not appear to implement equals and/or hashCode.  This can lead to significant performance problems when performing equality/dirty checking involving this Java type.  Consider registering a custom JavaTypeDescriptor or at least implementing equals/hashCode.
+�[22:48:46,480] INFO [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator: 52] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 Hibernate: 
     insert 
 
     into
-        Chat
+        Company
         (name) 
     values
         (?)
-Hibernate: 
-    update
-        users 
-	    set
-        company_id=?,
-        info=?,
-        birth_date=?,
-        firstname=?,
-        lastname=?,
-        role=?,
-        username=? 
-    where
-        id=?
-Hibernate: 
-    insert 
-
-    into
-        users_chat
-        (user_id, chat_id) 
-    values
-        (?, ?)
+k[22:48:46,662] WARN [org.hibernate.engine.jdbc.spi.SqlExceptionHelper: 137] SQL Error: 0, SQLState: 23505
+�[22:48:46,662] ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper: 142] ОШИБКА: повторяющееся значение ключа нарушает ограничение уникальности "company_name_key"
+S  Подробности: Ключ "(name)=(Google)" уже существует.
+�[22:48:46,672] INFO [org.hibernate.orm.connections.pooling: 502] HHH10001008: Cleaning up connection pool [jdbc:postgresql://localhost:5432/postgres]

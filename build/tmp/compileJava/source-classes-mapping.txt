@@ -12,16 +12,29 @@ com/foonk/entitiy/Role.java
 com/foonk/entitiy/Chat.java
  com.foonk.entitiy.Chat
  com.foonk.entitiy.Chat$ChatBuilder
+com/foonk/entitiy/AuditableEntity.java
+ com.foonk.entitiy.AuditableEntity
+com/foonk/entitiy/BaseEntity.java
+ com.foonk.entitiy.BaseEntity
 com/foonk/util/HibernateUtil.java
  com.foonk.util.HibernateUtil
 com/foonk/entitiy/User.java
  com.foonk.entitiy.User
- com.foonk.entitiy.User$UserBuilder
+com/foonk/entitiy/Language.java
+ com.foonk.entitiy.Language
 com/foonk/HibernateRunner.java
  com.foonk.HibernateRunner
 com/foonk/entitiy/Profile.java
  com.foonk.entitiy.Profile
  com.foonk.entitiy.Profile$ProfileBuilder
+com/foonk/entitiy/Manager.java
+ com.foonk.entitiy.Manager
+ com.foonk.entitiy.Manager$ManagerBuilder
 com/foonk/entitiy/Company.java
  com.foonk.entitiy.Company
  com.foonk.entitiy.Company$CompanyBuilder
+com/foonk/entitiy/Programmer.java
+ com.foonk.entitiy.Programmer
+ com.foonk.entitiy.Programmer$ProgrammerBuilder
+com/foonk/entitiy/LocaleInfo.java
+ com.foonk.entitiy.LocaleInfo
