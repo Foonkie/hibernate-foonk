@@ -4,15 +4,19 @@ package com.foonk;
 import com.foonk.entitiy.*;
 import com.foonk.util.HibernateUtil;
 import lombok.Cleanup;
+import org.hibernate.annotations.QueryHints;
+import org.hibernate.query.Query;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
+import javax.persistence.FlushModeType;
 import javax.persistence.Table;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.joining;
@@ -20,41 +24,68 @@ import static java.util.stream.Collectors.joining;
 class HibernateRunnerTest {
 
     @Test
-    void checkH2() {
+    void checkHql() {
         try (var sessionFactory = HibernateUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {
             session.beginTransaction();
 
-            var google = Company.builder()
-                    .name("Google")
-                    .build();
-            session.save(google);
+//            HQL / JPQL
+//            select u.* from users u where u.firstname = 'Ivan'
+            String name = "Ivan";
+            var result = session.createNamedQuery(
+//                    "select u from User u where u.personalInfo.firstname = ?1", User.class)
+                    "findUserByName", User.class)
+//                    .setParameter(1, name)
+                    .setParameter("firstname", name)
+                    .setParameter("companyName", "Google")
+                    .setFlushMode(FlushModeType.COMMIT)
+                    .setHint(QueryHints.FETCH_SIZE, "50")
+                    .list();
 
-            Programmer programmer = Programmer.builder()
-                    .username("ivan@gmail.com")
-                    .language(Language.JAVA)
-                    .company(google)
-                    .build();
-            session.save(programmer);
+            var countRows = session.createQuery("update User u set u.role = 'ADMIN'")
+                    .executeUpdate();
 
-            Manager manager = Manager.builder()
-                    .username("sveta@gmail.com")
-                    .projectName("Starter")
-                    .company(google)
-                    .build();
-            session.save(manager);
-            session.flush();
-
-            session.clear();
-
-            var programmer1 = session.get(Programmer.class, 1L);
-            var manager1 = session.get(User.class, 1L);
-            System.out.println();
-
+            session.createNativeQuery("select u.* from users u where u.firstname = 'Ivan'", User.class);
 
             session.getTransaction().commit();
         }
     }
+//    @Test
+//    void checkH2() {
+//        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+//             var session = sessionFactory.openSession()) {
+//            session.beginTransaction();
+//
+//            var google = Company.builder()
+//                    .name("Google")
+//                    .build();
+//            session.save(google);
+//
+//            Programmer programmer = Programmer.builder()
+//                    .username("ivan@gmail.com")
+//                    .language(Language.JAVA)
+//                    .company(google)
+//                    .build();
+//            session.save(programmer);
+//
+//            Manager manager = Manager.builder()
+//                    .username("sveta@gmail.com")
+//                    .projectName("Starter")
+//                    .company(google)
+//                    .build();
+//            session.save(manager);
+//            session.flush();
+//
+//            session.clear();
+//
+//            var programmer1 = session.get(Programmer.class, 1L);
+//            var manager1 = session.get(User.class, 1L);
+//            System.out.println();
+//
+//
+//            session.getTransaction().commit();
+//        }
+//    }
     @Test
     void localeInfo() {
         try (var sessionFactory = HibernateUtil.buildSessionFactory();

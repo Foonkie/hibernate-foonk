@@ -16,8 +16,8 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(User .class);
        configuration.addAnnotatedClass(Chat.class);
        configuration.addAnnotatedClass(Profile.class);
-       configuration.addAnnotatedClass(Programmer.class);
-       configuration.addAnnotatedClass(Manager.class);
+//       configuration.addAnnotatedClass(Programmer.class);
+//       configuration.addAnnotatedClass(Manager.class);
         configuration.registerTypeOverride(new JsonBinaryType());
         configuration.configure();
         return configuration.buildSessionFactory();

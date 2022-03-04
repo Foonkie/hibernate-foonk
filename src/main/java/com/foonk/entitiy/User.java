@@ -11,16 +11,20 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@NamedQuery(name = "findUserByName", query = "select u from User u " +
+        "left join u.company c " +
+        "where u.personalInfo.firstname = :firstname and c.name = :companyName " +
+        "order by u.personalInfo.lastname desc")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"company", "profile", "chats"})
+@EqualsAndHashCode(of = "username")
+@ToString(exclude = {"company", "profile", "userChats", "payments"})
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User implements Comparable<User> {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String username;
