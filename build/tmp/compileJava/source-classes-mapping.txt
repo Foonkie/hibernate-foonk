@@ -5,14 +5,15 @@ com/foonk/entitiy/PersonalInfo.java
  com.foonk.entitiy.PersonalInfo$PersonalInfoBuilder
 com/foonk/entitiy/BaseEntity.java
  com.foonk.entitiy.BaseEntity
-com/foonk/entitiy/AuditableEntity.java
- com.foonk.entitiy.AuditableEntity
+com/foonk/entitiy/User.java
+ com.foonk.entitiy.User
 com/foonk/entitiy/Language.java
  com.foonk.entitiy.Language
 com/foonk/entitiy/Role.java
  com.foonk.entitiy.Role
-com/foonk/entitiy/LocaleInfo.java
- com.foonk.entitiy.LocaleInfo
+com/foonk/entitiy/Profile.java
+ com.foonk.entitiy.Profile
+ com.foonk.entitiy.Profile$ProfileBuilder
 com/foonk/type/JsonType.java
  com.foonk.type.JsonType
 com/foonk/entitiy/Chat.java
@@ -20,18 +21,17 @@ com/foonk/entitiy/Chat.java
  com.foonk.entitiy.Chat$ChatBuilder
 com/foonk/converter/BirthdayConverter.java
  com.foonk.converter.BirthdayConverter
-com/foonk/entitiy/Company.java
- com.foonk.entitiy.Company
- com.foonk.entitiy.Company$CompanyBuilder
-com/foonk/entitiy/User.java
- com.foonk.entitiy.User
-com/foonk/entitiy/Manager.java
- com.foonk.entitiy.Manager
- com.foonk.entitiy.Manager$ManagerBuilder
-com/foonk/entitiy/Profile.java
- com.foonk.entitiy.Profile
- com.foonk.entitiy.Profile$ProfileBuilder
+com/foonk/entitiy/AuditableEntity.java
+ com.foonk.entitiy.AuditableEntity
 com/foonk/util/HibernateUtil.java
  com.foonk.util.HibernateUtil
 com/foonk/HibernateRunner.java
  com.foonk.HibernateRunner
+com/foonk/entitiy/Company.java
+ com.foonk.entitiy.Company
+ com.foonk.entitiy.Company$CompanyBuilder
+com/foonk/entitiy/Payment.java
+ com.foonk.entitiy.Payment
+ com.foonk.entitiy.Payment$PaymentBuilder
+com/foonk/entitiy/LocaleInfo.java
+ com.foonk.entitiy.LocaleInfo
