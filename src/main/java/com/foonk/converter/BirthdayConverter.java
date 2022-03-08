@@ -1,6 +1,6 @@
 package com.foonk.converter;
 
-import com.foonk.entitiy.Birthday;
+import com.foonk.entity.Birthday;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

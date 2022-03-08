@@ -1,11 +1,10 @@
 package com.foonk;
 
 
-import com.foonk.entitiy.*;
+import com.foonk.entity.*;
 import com.foonk.util.HibernateUtil;
 import lombok.Cleanup;
 import org.hibernate.annotations.QueryHints;
-import org.hibernate.query.Query;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
@@ -16,7 +15,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.List;
 
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.joining;
@@ -124,26 +122,26 @@ class HibernateRunnerTest {
             session.getTransaction().commit();
         }
     }
-    @Test
-    void checkManyToMany() {
-        try (var sessionFactory = HibernateUtil.buildSessionFactory();
-             var session = sessionFactory.openSession()) {
-            session.beginTransaction();
-
-            var user = session.get(User.class, 1L);
-
-//            user.getChats().clear();
-
-            var chat = Chat.builder()
-                    .name("Petya")
-                    .build();
-            user.addChat(chat);
-
-            session.save(chat);
-
-            session.getTransaction().commit();
-        }
-    }
+//    @Test
+//    void checkManyToMany() {
+//        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+//             var session = sessionFactory.openSession()) {
+//            session.beginTransaction();
+//
+//            var user = session.get(User.class, 1L);
+//
+////            user.getChats().clear();
+//
+//            var chat = Chat.builder()
+//                    .name("Petya")
+//                    .build();
+//            user.addChat(chat);
+//
+//            session.save(chat);
+//
+//            session.getTransaction().commit();
+//        }
+//    }
     @Test
     void addUserToNewCompany() {
         @Cleanup var sessionFactory = HibernateUtil.buildSessionFactory();
