@@ -1,37 +1,63 @@
-com/foonk/entitiy/Birthday.java
- com.foonk.entitiy.Birthday
-com/foonk/entitiy/PersonalInfo.java
- com.foonk.entitiy.PersonalInfo
- com.foonk.entitiy.PersonalInfo$PersonalInfoBuilder
-com/foonk/entitiy/BaseEntity.java
- com.foonk.entitiy.BaseEntity
-com/foonk/entitiy/User.java
- com.foonk.entitiy.User
-com/foonk/entitiy/Language.java
- com.foonk.entitiy.Language
-com/foonk/entitiy/Role.java
- com.foonk.entitiy.Role
-com/foonk/entitiy/Profile.java
- com.foonk.entitiy.Profile
- com.foonk.entitiy.Profile$ProfileBuilder
+com/foonk/entity/LocaleInfo.java
+ com.foonk.entity.LocaleInfo
+com/foonk/entity/QUser.java
+ com.foonk.entity.QUser
+com/foonk/entity/QProfile.java
+ com.foonk.entity.QProfile
+com/foonk/entity/QChat.java
+ com.foonk.entity.QChat
+com/foonk/entity/UserChat.java
+ com.foonk.entity.UserChat
+ com.foonk.entity.UserChat$UserChatBuilder
 com/foonk/type/JsonType.java
  com.foonk.type.JsonType
-com/foonk/entitiy/Chat.java
- com.foonk.entitiy.Chat
- com.foonk.entitiy.Chat$ChatBuilder
+com/foonk/entity/Payment.java
+ com.foonk.entity.Payment
+ com.foonk.entity.Payment$PaymentBuilder
+com/foonk/entity/Chat.java
+ com.foonk.entity.Chat
+ com.foonk.entity.Chat$ChatBuilder
+com/foonk/entity/PersonalInfo.java
+ com.foonk.entity.PersonalInfo
+ com.foonk.entity.PersonalInfo$PersonalInfoBuilder
+com/foonk/entity/QLocaleInfo.java
+ com.foonk.entity.QLocaleInfo
+com/foonk/entity/AuditableEntity.java
+ com.foonk.entity.AuditableEntity
+com/foonk/entity/QPersonalInfo.java
+ com.foonk.entity.QPersonalInfo
+com/foonk/util/StringUtils.java
+ com.foonk.util.StringUtils
+com/foonk/entity/Birthday.java
+ com.foonk.entity.Birthday
+com/foonk/entity/QUserChat.java
+ com.foonk.entity.QUserChat
+com/foonk/entity/Role.java
+ com.foonk.entity.Role
+com/foonk/util/TestDataImporter.java
+ com.foonk.util.TestDataImporter
+com/foonk/entity/Company.java
+ com.foonk.entity.Company
+ com.foonk.entity.Company$CompanyBuilder
 com/foonk/converter/BirthdayConverter.java
  com.foonk.converter.BirthdayConverter
-com/foonk/entitiy/AuditableEntity.java
- com.foonk.entitiy.AuditableEntity
+com/foonk/entity/User.java
+ com.foonk.entity.User
+ com.foonk.entity.User$UserBuilder
+com/foonk/entity/BaseEntity.java
+ com.foonk.entity.BaseEntity
+com/foonk/entity/Profile.java
+ com.foonk.entity.Profile
+ com.foonk.entity.Profile$ProfileBuilder
+com/foonk/entity/QCompany.java
+ com.foonk.entity.QCompany
+com/foonk/entity/QAuditableEntity.java
+ com.foonk.entity.QAuditableEntity
+com/foonk/entity/Language.java
+ com.foonk.entity.Language
+com/foonk/entity/QPayment.java
+ com.foonk.entity.QPayment
 com/foonk/util/HibernateUtil.java
  com.foonk.util.HibernateUtil
 com/foonk/HibernateRunner.java
  com.foonk.HibernateRunner
-com/foonk/entitiy/Company.java
- com.foonk.entitiy.Company
- com.foonk.entitiy.Company$CompanyBuilder
-com/foonk/entitiy/Payment.java
- com.foonk.entitiy.Payment
- com.foonk.entitiy.Payment$PaymentBuilder
-com/foonk/entitiy/LocaleInfo.java
- com.foonk.entitiy.LocaleInfo
