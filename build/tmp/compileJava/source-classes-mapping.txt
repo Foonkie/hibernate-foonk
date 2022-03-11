@@ -6,14 +6,12 @@ com/foonk/entity/QProfile.java
  com.foonk.entity.QProfile
 com/foonk/entity/QChat.java
  com.foonk.entity.QChat
-com/foonk/entity/UserChat.java
- com.foonk.entity.UserChat
- com.foonk.entity.UserChat$UserChatBuilder
+com/foonk/entity/QAuditableEntity.java
+ com.foonk.entity.QAuditableEntity
 com/foonk/type/JsonType.java
  com.foonk.type.JsonType
-com/foonk/entity/Payment.java
- com.foonk.entity.Payment
- com.foonk.entity.Payment$PaymentBuilder
+com/foonk/entity/BaseEntity.java
+ com.foonk.entity.BaseEntity
 com/foonk/entity/Chat.java
  com.foonk.entity.Chat
  com.foonk.entity.Chat$ChatBuilder
@@ -34,30 +32,32 @@ com/foonk/entity/QUserChat.java
  com.foonk.entity.QUserChat
 com/foonk/entity/Role.java
  com.foonk.entity.Role
-com/foonk/util/TestDataImporter.java
- com.foonk.util.TestDataImporter
-com/foonk/entity/Company.java
- com.foonk.entity.Company
- com.foonk.entity.Company$CompanyBuilder
+com/foonk/entity/Language.java
+ com.foonk.entity.Language
+com/foonk/entity/QCompany.java
+ com.foonk.entity.QCompany
 com/foonk/converter/BirthdayConverter.java
  com.foonk.converter.BirthdayConverter
+com/foonk/entity/QPayment.java
+ com.foonk.entity.QPayment
 com/foonk/entity/User.java
  com.foonk.entity.User
  com.foonk.entity.User$UserBuilder
-com/foonk/entity/BaseEntity.java
- com.foonk.entity.BaseEntity
-com/foonk/entity/Profile.java
- com.foonk.entity.Profile
- com.foonk.entity.Profile$ProfileBuilder
-com/foonk/entity/QCompany.java
- com.foonk.entity.QCompany
-com/foonk/entity/QAuditableEntity.java
- com.foonk.entity.QAuditableEntity
-com/foonk/entity/Language.java
- com.foonk.entity.Language
-com/foonk/entity/QPayment.java
- com.foonk.entity.QPayment
 com/foonk/util/HibernateUtil.java
  com.foonk.util.HibernateUtil
 com/foonk/HibernateRunner.java
  com.foonk.HibernateRunner
+com/foonk/util/TestDataImporter.java
+ com.foonk.util.TestDataImporter
+com/foonk/entity/UserChat.java
+ com.foonk.entity.UserChat
+ com.foonk.entity.UserChat$UserChatBuilder
+com/foonk/entity/Company.java
+ com.foonk.entity.Company
+ com.foonk.entity.Company$CompanyBuilder
+com/foonk/entity/Profile.java
+ com.foonk.entity.Profile
+ com.foonk.entity.Profile$ProfileBuilder
+com/foonk/entity/Payment.java
+ com.foonk.entity.Payment
+ com.foonk.entity.Payment$PaymentBuilder
