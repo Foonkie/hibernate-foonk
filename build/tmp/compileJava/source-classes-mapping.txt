@@ -43,21 +43,21 @@ com/foonk/entity/QPayment.java
 com/foonk/entity/User.java
  com.foonk.entity.User
  com.foonk.entity.User$UserBuilder
+com/foonk/entity/UserChat.java
+ com.foonk.entity.UserChat
+ com.foonk.entity.UserChat$UserChatBuilder
+com/foonk/entity/Profile.java
+ com.foonk.entity.Profile
+ com.foonk.entity.Profile$ProfileBuilder
+com/foonk/entity/Company.java
+ com.foonk.entity.Company
+ com.foonk.entity.Company$CompanyBuilder
 com/foonk/util/HibernateUtil.java
  com.foonk.util.HibernateUtil
 com/foonk/HibernateRunner.java
  com.foonk.HibernateRunner
 com/foonk/util/TestDataImporter.java
  com.foonk.util.TestDataImporter
-com/foonk/entity/UserChat.java
- com.foonk.entity.UserChat
- com.foonk.entity.UserChat$UserChatBuilder
-com/foonk/entity/Company.java
- com.foonk.entity.Company
- com.foonk.entity.Company$CompanyBuilder
-com/foonk/entity/Profile.java
- com.foonk.entity.Profile
- com.foonk.entity.Profile$ProfileBuilder
 com/foonk/entity/Payment.java
  com.foonk.entity.Payment
  com.foonk.entity.Payment$PaymentBuilder
