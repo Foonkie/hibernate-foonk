@@ -18,6 +18,8 @@ public class HibernateUtil {
        configuration.addAnnotatedClass(UserChat.class);
        configuration.addAnnotatedClass(Profile.class);
        configuration.addAnnotatedClass(Payment.class);
+       configuration.addAnnotatedClass(Audit.class);
+
 //       configuration.addAnnotatedClass(Programmer.class);
 //       configuration.addAnnotatedClass(Manager.class);
         configuration.registerTypeOverride(new JsonBinaryType());
