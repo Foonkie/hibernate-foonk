@@ -34,7 +34,7 @@ public class QUser extends EntityPathBase<User> {
 
     public final EnumPath<Role> role = createEnum("role", Role.class);
 
-    public final SetPath<UserChat, QUserChat> userChats = this.<UserChat, QUserChat>createSet("userChats", UserChat.class, QUserChat.class, PathInits.DIRECT2);
+    public final ListPath<UserChat, QUserChat> userChats = this.<UserChat, QUserChat>createList("userChats", UserChat.class, QUserChat.class, PathInits.DIRECT2);
 
     public final StringPath username = createString("username");
 

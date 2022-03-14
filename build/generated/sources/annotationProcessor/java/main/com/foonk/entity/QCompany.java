@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -22,11 +21,11 @@ public class QCompany extends EntityPathBase<Company> {
 
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
-    public final ListPath<LocaleInfo, QLocaleInfo> locales = this.<LocaleInfo, QLocaleInfo>createList("locales", LocaleInfo.class, QLocaleInfo.class, PathInits.DIRECT2);
+    public final MapPath<String, String, StringPath> locales = this.<String, String, StringPath>createMap("locales", String.class, String.class, StringPath.class);
 
     public final StringPath name = createString("name");
 
-    public final SetPath<User, QUser> users = this.<User, QUser>createSet("users", User.class, QUser.class, PathInits.DIRECT2);
+    public final MapPath<String, User, QUser> users = this.<String, User, QUser>createMap("users", String.class, User.class, QUser.class);
 
     public QCompany(String variable) {
         super(Company.class, forVariable(variable));

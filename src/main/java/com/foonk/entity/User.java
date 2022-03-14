@@ -1,6 +1,5 @@
 package com.foonk.entity;
 
-import com.foonk.entity.*;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +11,8 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.FetchProfile;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -31,9 +32,7 @@ import javax.persistence.NamedSubgraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static com.foonk.util.StringUtils.SPACE;
 
@@ -68,6 +67,7 @@ import static com.foonk.util.StringUtils.SPACE;
 @Entity
 @Table(name = "users", schema = "public")
 @TypeDef(name = "dmdev", typeClass = JsonBinaryType.class)
+@Audited
 public class User implements Comparable<User>, BaseEntity<Long> {
 
     @Id
@@ -99,10 +99,12 @@ public class User implements Comparable<User>, BaseEntity<Long> {
 //    @Fetch(FetchMode.JOIN)
     private Company company;
 
+    @NotAudited
     @Builder.Default
     @OneToMany(mappedBy = "user")
-    private Set<UserChat> userChats = new HashSet<>();
+    private List<UserChat> userChats = new ArrayList<>();
 
+    @NotAudited
     @Builder.Default
 //    @BatchSize(size = 3)
 //    1 + N -> 1 + 500 -> 1 + 500/3 -> 3

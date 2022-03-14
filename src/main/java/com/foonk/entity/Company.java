@@ -7,9 +7,24 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.SortNatural;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
-import javax.persistence.*;
-import java.util.*;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKey;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToMany;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +33,8 @@ import java.util.*;
 @ToString(exclude = "users")
 @Builder
 @Entity
+//@BatchSize(size = 3)
+@Audited
 public class Company {
 
     @Id
@@ -29,19 +46,24 @@ public class Company {
 
     @Builder.Default
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @OrderBy(clause = "username DESC, lastname ASC")
-//    @OrderBy("personalInfo.firstname")
-    @OrderColumn(name = "id")
+    @MapKey(name = "username")
     @SortNatural
-//    @SortComparator()
-    private Set<User> users = new TreeSet<>();
+    @NotAudited
+    private Map<String, User> users = new TreeMap<>();
+
     @Builder.Default
     @ElementCollection
     @CollectionTable(name = "company_locale", joinColumns = @JoinColumn(name = "company_id"))
-    private List<LocaleInfo> locales = new ArrayList<>();
+//    @AttributeOverride(name = "lang", column = @Column(name = "language"))
+//    private List<LocaleInfo> locales = new ArrayList<>();
+    @MapKeyColumn(name = "lang")
+    @Column(name = "description")
+    @NotAudited
+    private Map<String, String> locales = new HashMap<>();
 
     public void addUser(User user) {
-        users.add(user);
+        users.put(user.getUsername(), user);
         user.setCompany(this);
     }
 }
+

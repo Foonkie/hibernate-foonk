@@ -1,29 +1,49 @@
 package com.foonk.util;
 
 import com.foonk.converter.BirthdayConverter;
-import com.foonk.entity.*;
+import com.foonk.entity.Audit;
+import com.foonk.entity.User;
+import com.foonk.interceptor.GlobalInterceptor;
+import com.foonk.listener.AuditTableListener;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.event.service.spi.EventListenerRegistry;
+import org.hibernate.event.spi.EventType;
+import org.hibernate.internal.SessionFactoryImpl;
 
 @UtilityClass
 public class HibernateUtil {
-   public static SessionFactory buildSessionFactory(){
-    var configuration = new Configuration();
-        configuration.addAttributeConverter(new BirthdayConverter(), true);
-       configuration.addAnnotatedClass(Company.class);
-        configuration.addAnnotatedClass(User.class);
-       configuration.addAnnotatedClass(Chat.class);
-       configuration.addAnnotatedClass(UserChat.class);
-       configuration.addAnnotatedClass(Profile.class);
-       configuration.addAnnotatedClass(Payment.class);
-       configuration.addAnnotatedClass(Audit.class);
 
-//       configuration.addAnnotatedClass(Programmer.class);
-//       configuration.addAnnotatedClass(Manager.class);
-        configuration.registerTypeOverride(new JsonBinaryType());
+    public static SessionFactory buildSessionFactory() {
+        Configuration configuration = buildConfiguration();
         configuration.configure();
-        return configuration.buildSessionFactory();
-}}
 
+        var sessionFactory = configuration.buildSessionFactory();
+//        registerListeners(sessionFactory);
+
+        return sessionFactory;
+    }
+
+    private static void registerListeners(SessionFactory sessionFactory) {
+        var sessionFactoryImpl = sessionFactory.unwrap(SessionFactoryImpl.class);
+        var listenerRegistry = sessionFactoryImpl.getServiceRegistry().getService(EventListenerRegistry.class);
+        var auditTableListener = new AuditTableListener();
+        listenerRegistry.appendListeners(EventType.PRE_INSERT, auditTableListener);
+        listenerRegistry.appendListeners(EventType.PRE_DELETE, auditTableListener);
+    }
+
+    public static Configuration buildConfiguration() {
+        Configuration configuration = new Configuration();
+        configuration.setPhysicalNamingStrategy(new CamelCaseToUnderscoresNamingStrategy());
+        configuration.addAnnotatedClass(User.class);
+
+        configuration.addAnnotatedClass(Audit.class);
+        configuration.addAttributeConverter(new BirthdayConverter());
+        configuration.registerTypeOverride(new JsonBinaryType());
+        configuration.setInterceptor(new GlobalInterceptor());
+        return configuration;
+    }
+}
