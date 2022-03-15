@@ -1,6 +1,7 @@
 package com.foonk;
 
 import com.foonk.entity.Payment;
+import com.foonk.entity.User;
 import com.foonk.interceptor.GlobalInterceptor;
 import com.foonk.util.HibernateUtil;
 import com.foonk.util.TestDataImporter;
@@ -16,18 +17,24 @@ public class HibernateRunner {
 
     @Transactional
     public static void main(String[] args) throws SQLException {
-        try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
-             Session session = sessionFactory
-//                     .withOptions()
-//                     .interceptor(new GlobalInterceptor())
-                     .openSession()) {
-            TestDataImporter.importData(sessionFactory);
-            session.beginTransaction();
+        try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory()) {
+//            TestDataImporter.importData(sessionFactory);
+            try (var session = sessionFactory.openSession()) {
+                session.beginTransaction();
+                User user=null;
+                user = session.find(User.class, 1L);
+                user.getCompany().getName();
+                var user1 = session.find(User.class, 1L);
 
+                session.getTransaction().commit();
+            }
+            try (var session = sessionFactory.openSession()) {
+                session.beginTransaction();
 
-            var payment = session.find(Payment.class, 1L);
-            payment.setAmount(payment.getAmount() + 10);
-
-            session.getTransaction().commit();
+                var user2 = session.find(User.class, 1L);
+                user2.getCompany().getName();
+                session.getTransaction().commit();
+            }
         }
-    }}
+    }
+}

@@ -7,10 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.FetchProfile;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
@@ -68,6 +65,7 @@ import static com.foonk.util.StringUtils.SPACE;
 @Table(name = "users", schema = "public")
 @TypeDef(name = "dmdev", typeClass = JsonBinaryType.class)
 @Audited
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User implements Comparable<User>, BaseEntity<Long> {
 
     @Id
