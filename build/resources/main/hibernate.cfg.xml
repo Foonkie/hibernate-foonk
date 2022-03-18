@@ -17,6 +17,7 @@
         <property name="hibernate.javax.cache.uri">/ehcache-config.xml</property>
         <property name="hibernate.cache.use_query_cache">true</property>
         <property name="hibernate.generate_statistics">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
         <!--        <property name="hibernate.connection.isolation">8</property>-->
 
         <mapping class="com.foonk.entity.User"/>

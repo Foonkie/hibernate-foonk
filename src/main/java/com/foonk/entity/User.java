@@ -32,7 +32,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.foonk.util.StringUtils.SPACE;
-
+@NamedEntityGraph(
+        name = "WithCompany",
+        attributeNodes = {
+                @NamedAttributeNode(value = "company")
+        }
+)
 @NamedEntityGraph(
         name = "WithCompanyAndChat",
         attributeNodes = {
