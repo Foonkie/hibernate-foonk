@@ -2,6 +2,7 @@ package com.foonk.dao;
 
 import com.foonk.entity.BaseEntity;
 import lombok.Cleanup;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.SessionFactory;
 
@@ -12,8 +13,10 @@ import java.util.Map;
 import java.util.Optional;
 @RequiredArgsConstructor
 public abstract class RepositoryBase<K extends Serializable, E extends BaseEntity<K>> implements Repository<K, E> {
+    @Getter
     private final EntityManager entityManager;
     private final Class<E> clazz;
+
     @Override
     public E save(E entity) {
         entityManager.persist(entity);
